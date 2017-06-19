@@ -17,11 +17,11 @@ SHELL = /bin/sh
 #  should not compile LAPACK with flags such as -ffpe-trap=overflow.
 #
 FORTRAN  = gfortran
-OPTS     = -O2 -frecursive
+OPTS     = -O3 -march=native -m64 -fomit-frame-pointer -fPIC
 DRVOPTS  = $(OPTS)
-NOOPT    = -O0 -frecursive
+NOOPT    = -O0 -fPIC
 LOADER   = gfortran
-LOADOPTS =
+LOADOPTS = -lopenblas -lcblas
 #
 #  Comment out the following line to include deprecated routines to the
 #  LAPACK library.
@@ -78,4 +78,4 @@ BLASLIB      = ../../librefblas.a
 CBLASLIB     = ../../libcblas.a
 LAPACKLIB    = liblapack.a
 TMGLIB       = libtmglib.a
-LAPACKELIB   = liblapacke.a
+LAPACKELIB   = liblapack.3.7.0.a
